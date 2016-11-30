@@ -1,0 +1,49 @@
+version: 1
+
+default: build-au-proxy
+
+property:
+  TAG: deployable/debian-build
+  PROXY: http://10.8.8.8:3142
+  LOCALE: original
+  IMAGE:
+    shell: |
+      awk '/^FROM/{print $2}' Dockerfile
+  BUILD_ARGS: [] 
+  BUILD_ARGS_STR: ''
+
+command:
+
+  pull: 
+    shell: 'docker pull {{ IMAGE }}'
+
+  build:
+    shell: 'docker build -t {{ TAG }} {{ BUILD_ARGS_STR }} .'
+
+  au: 
+    property:
+      LOCALE: au
+
+  locale:
+#    property_concat: 
+#      BUILD_ARGS: ["--build-arg","DOCKER_BUILD_LOCALE={{LOCALE}}"]
+    property_append: 
+      BUILD_ARGS_STR: |
+        --build-arg DOCKER_BUILD_LOCALE={{LOCALE}}
+   
+  build-au:
+    command: ["au","locale","build"]
+
+  proxy: 
+#    property_concat: 
+#      BUILD_ARGS: ["--build-arg","DOCKER_BUILD_PROXY={{PROXY}}"]
+    property_append:
+      BUILD_ARGS_STR: |
+        --build-arg DOCKER_BUILD_PROXY={{PROXY}}
+
+  build-proxy: 
+    command: ["proxy","build"]
+
+  build-au-proxy: |
+    command: ["au","proxy","build"]
+

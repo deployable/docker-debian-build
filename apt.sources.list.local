@@ -1,0 +1,4 @@
+deb http://10.8.8.8:3142/deb.debian.org/debian jessie main
+deb http://10.8.8.8:3142/deb.debian.org/debian jessie-updates main
+deb http://10.8.8.8:3142/security.debian.org jessie/updates main
+

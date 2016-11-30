@@ -1,0 +1,11 @@
+#deb http://mirrorservice.org/debian jessie main
+#deb http://mirrorservice.org/debian jessie-updates main
+
+#deb http://mirror.bytemark.co.uk/debian/debian jessie main
+#deb http://mirror.bytemark.co.uk/debian/debian jessie-updates main
+
+deb http://ftp.uk.debian.org/debian jessie main
+deb http://ftp.uk.debian.org/debian jessie-updates main
+
+deb http://security.debian.org jessie/updates main
+

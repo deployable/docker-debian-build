@@ -1,0 +1,13 @@
+#deb http://debian.mirror.digitalpacific.com.au/debian jessie main
+#deb http://debian.mirror.digitalpacific.com.au/debian jessie-updates main
+
+#deb http://ftp.iinet.net.au/debian/debian jessie main
+#deb http://ftp.iinet.net.au/debian/debian jessie-updates main
+
+#deb http://ftp.au.debian.org/debian jessie main
+#deb http://ftp.au.debian.org/debian jessie-updates main
+
+deb http://mirror.aarnet.edu.au/debian jessie main
+deb http://mirror.aarnet.edu.au/debian jessie-updates main
+deb http://mirror.aarnet.edu.au/pub/debian-security jessie/updates main
+

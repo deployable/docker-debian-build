@@ -1,0 +1,15 @@
+# Delete docs
+path-exclude=/usr/share/doc/*
+path-include=/usr/share/doc/*/copyright
+
+# Delete locales
+path-exclude=/usr/share/locale/*
+path-include=/usr/share/locale/en_GB/*
+path-include=/usr/share/locale/en_US/*
+path-include=/usr/share/locale/locale.alias
+
+# Delete man pages
+path-exclude=/usr/share/man/*
+path-exclude /usr/share/groff/*
+path-exclude /usr/share/info/*
+
