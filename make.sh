@@ -1,11 +1,19 @@
 #!/usr/bin/env bash
 
+
+# Setup
 set -uexo pipefail
 which greadlink >/dev/null 2>/dev/null && readlink=greadlink || readlink=readlink
 rundir=$($readlink -f "${0%/*}")
 cd "$rundir"
 
+
+# Command to run
+
 ARG=${1:-build-proxy}
+
+
+# Properties
 
 SCOPE="deployable"
 NAME="debian-build"
@@ -15,6 +23,8 @@ LOCALE="original"
 PROXY="http://10.8.8.8:3142"
 BUILD_ARGS="" 
 
+
+# Commands
 
 pull(){ 
   docker pull "${IMAGE}"
@@ -39,6 +49,16 @@ proxy(){
   echo "set BUILD_ARGS: ${BUILD_ARGS}"
 }
 
+git_tag(){
+  git tag -f $(date +%Y%m%d) && git push -f --tags
+}
+
+clean(){
+  docker rmi ${SCOPE_NAME}
+}
+
+
+# Orchestration
 
 pull-build(){
   pull
@@ -63,9 +83,8 @@ build-au-proxy(){
   pull-build
 }
 
-clean(){
-  docker rmi ${SCOPE_NAME}
-}
+
+# Runit
 
 $ARG
 
