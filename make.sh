@@ -11,6 +11,7 @@ cd "$rundir"
 # Command to run
 
 ARG=${1:-build-proxy}
+shift
 
 
 # Properties
@@ -50,7 +51,8 @@ proxy(){
 }
 
 git_tag(){
-  git tag -f $(date +%Y%m%d) && git push -f --tags
+  local build_tag=${1:-$(date +%Y%m%d)}
+  git tag -f "${build_tag}" && git push -f --tags
 }
 
 clean(){
@@ -86,5 +88,5 @@ build-au-proxy(){
 
 # Runit
 
-$ARG
+$ARG "$@"
 
