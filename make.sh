@@ -19,7 +19,8 @@ shift
 SCOPE="deployable"
 NAME="debian-build"
 SCOPE_NAME="${SCOPE}/${NAME}"
-IMAGE=$(awk 'tolower($1) ~ /^from$/ {print $2}' Dockerfile)
+#IMAGE=$(awk 'tolower($1) ~ /^from$/ {print $2}' Dockerfile)
+IMAGE=debian
 LOCALE="original"
 PROXY="http://10.8.8.8:3142"
 BUILD_ARGS="" 
@@ -33,6 +34,24 @@ pull(){
 
 build(){
   docker build -t "${SCOPE_NAME}" ${BUILD_ARGS} .
+}
+
+build_one(){
+  local tag=$1
+  rm -f Dockerfile.$tag
+  perl -pe 's/debian:latest/debian:'$tag'/' Dockerfile > Dockerfile.$tag
+  docker build --build-arg DOCKER_BUILD_PROXY="${PROXY}" -t ${SCOPE_NAME}:$tag ${BUILD_ARGS} -f Dockerfile.$tag .
+}
+
+build_all(){
+  build_one wheezy
+  build_one 7
+  build_one jessie
+  build_one 8
+  build_one latest
+  build_one stretch
+  build_one testing
+  build_one sid
 }
 
 locale(){
