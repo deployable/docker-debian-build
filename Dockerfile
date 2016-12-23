@@ -38,12 +38,12 @@ RUN set -uex; \
 
 
 label org.label-schema.name = "deployable/debian-build" \
-      org.label-schema.version="1.0.0" \
+      org.label-schema.version = "20161223" \
       org.label-schema.vendor="Deployable" \
       org.label-schema.docker.cmd="docker run -ti deployable/debian-build \
       org.label-schema.url="https://github.com/deployable/docker-debian-build" \
       org.label-schema.vcs-url="https://github.com/deployable/docker-debian-build.git" \
-      org.label-schema.vcs-ref = "b4cac33cff2491440c3c010aabc885387ade425f" \
+      org.label-schema.vcs-ref = "5c4fa16c20b6b2cb2537adf257687e88538adffa" \
       org.label-schema.schema-version="1.0" 
 
 

@@ -104,6 +104,16 @@ build-au-proxy(){
   pull-build
 }
 
+label_vcsref(){
+  git_revision=$(git rev-parse --verify HEAD)
+  perl -i -pane 's!org\.label-schema\.vcs-ref.*!org.label-schema.vcs-ref = "'$git_revision'" \\!g;' Dockerfile
+}
+
+label_version(){
+  local version=$(date +%Y%m%d)
+  perl -i -pane 's!org\.label-schema\.version.*!org.label-schema.version = "'$version'" \\!g;' Dockerfile
+}
+
 
 # Runit
 "$@"
