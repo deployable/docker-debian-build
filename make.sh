@@ -23,7 +23,7 @@ SCOPE_NAME="${SCOPE}/${NAME}"
 IMAGE=debian
 LOCALE="original"
 PROXY="http://10.8.8.8:3142"
-BUILD_ARGS="" 
+#BUILD_ARGS="" 
 
 
 # Commands
@@ -33,7 +33,7 @@ pull(){
 }
 
 build(){
-  docker build -t "${SCOPE_NAME}" ${BUILD_ARGS} .
+  build_one latest
 }
 
 build_one(){
