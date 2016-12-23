@@ -8,10 +8,8 @@ rundir=$($readlink -f "${0%/*}")
 cd "$rundir"
 
 
-# Command to run
-
-ARG=${1:-build-proxy}
-shift
+# Default params to `build-proxy`
+[ -z ${1:-} ] && set -- build-proxy "$@"
 
 
 # Properties
@@ -23,7 +21,9 @@ SCOPE_NAME="${SCOPE}/${NAME}"
 IMAGE=debian
 LOCALE="original"
 PROXY="http://10.8.8.8:3142"
-#BUILD_ARGS="" 
+if [ -z "${BUILD_ARGS:-}" ]; then
+ BUILD_ARGS=""
+fi
 
 
 # Commands
@@ -106,6 +106,5 @@ build-au-proxy(){
 
 
 # Runit
-
-$ARG "$@"
+"$@"
 
