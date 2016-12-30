@@ -43,7 +43,7 @@ label org.label-schema.name = "deployable/debian-build" \
       org.label-schema.docker.cmd="docker run -ti deployable/debian-build \
       org.label-schema.url="https://github.com/deployable/docker-debian-build" \
       org.label-schema.vcs-url="https://github.com/deployable/docker-debian-build.git" \
-      org.label-schema.vcs-ref = "5c4fa16c20b6b2cb2537adf257687e88538adffa" \
+      org.label-schema.vcs-ref = "6cbb19d1cce76177003717171f3c2f53989d0963" \
       org.label-schema.schema-version="1.0" 
 
 
