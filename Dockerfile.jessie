@@ -29,6 +29,7 @@ RUN set -uex; \
       wget \
       gcc \
       g++ \
+      git \
       libc6-dev \
       libtool \
       autoconf \
