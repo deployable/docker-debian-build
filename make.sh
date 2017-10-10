@@ -48,10 +48,10 @@ build_all(){
   build_one 7
   build_one jessie
   build_one 8
-  build_one latest
   build_one stretch
+  build_one 9
+  build_one latest
   build_one testing
-  build_one sid
 }
 
 locale(){

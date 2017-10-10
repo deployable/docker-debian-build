@@ -27,6 +27,7 @@ RUN set -uex; \
       make \
       curl \
       wget \
+      ca-certificates \
       gcc \
       g++ \
       git \

@@ -4,17 +4,9 @@ FROM debian:latest
 
 # Source build packages locally
 ARG DOCKER_BUILD_PROXY
-ENV DOCKER_BUILD_PROXY $DOCKER_BUILD_PROXY
 
 # Fix ipv6 wierdness with new debian mirror resolver
 RUN echo 'precedence ::ffff:0:0/96  100' > /etc/gai.conf
-
-# New deb mirror removes need for this
-#ARG DOCKER_BUILD_LOCALE=original
-#RUN cp /etc/apt/sources.list /etc/apt/sources.list.original
-#COPY apt.sources.list.au /etc/apt/sources.list.au
-#COPY apt.sources.list.uk /etc/apt/sources.list.uk
-#COPY apt.sources.list.$DOCKER_BUILD_LOCALE /etc/apt/sources.list
 
 # Turn off documentation
 COPY dpkg.01_nodoc /etc/dpkg/dpkg.conf.d/01_nodoc
@@ -27,6 +19,7 @@ RUN set -uex; \
       make \
       curl \
       wget \
+      ca-certificates \
       gcc \
       g++ \
       git \
@@ -39,7 +32,7 @@ RUN set -uex; \
 
 
 label org.label-schema.name = "deployable/debian-build" \
-      org.label-schema.version = "20161230" \
+      org.label-schema.version = "20171010" \
       org.label-schema.vendor="Deployable" \
       org.label-schema.docker.cmd="docker run -ti deployable/debian-build" \
       org.label-schema.url="https://github.com/deployable/docker-debian-build" \
